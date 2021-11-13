@@ -14,6 +14,7 @@ async def db_connect(app: FastAPI) -> None:
         app.state.db = db
     except Exception as e:
         logger.warning('DATABASE CONNECTION ERROR')
+        logger.warning(e)
 
 
 async def db_disconnect(app: FastAPI) -> None:
@@ -21,3 +22,5 @@ async def db_disconnect(app: FastAPI) -> None:
         await app.state.db.disconnect()
     except Exception as e:
         logger.warning('FAILED TO DISCONNECT')
+        logger.warning(e)
+
